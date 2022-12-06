@@ -4,7 +4,7 @@ import Beer from './Beer';
 import Nav from './Nav';
 import Favourites from './Favourites';
 
-
+//HI
 function Home(props) {
 
     const [posts, setPosts] = useState([]);
