@@ -4,7 +4,7 @@ import Beer from './Beer';
 import Nav from './Nav';
 import Favourites from './Favourites';
 
-//HI
+
 function Home(props) {
 
     const [posts, setPosts] = useState([]);
@@ -40,7 +40,7 @@ function Home(props) {
                <div className='header'/>
 
                <Beer id={post.id} name={post.name} image_url={post.image_url} 
-               first_brewed={post.first_brewed}  />
+               first_brewed={post.first_brewed}  posts={posts}/>
                 </div>
 
          

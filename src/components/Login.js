@@ -1,35 +1,44 @@
 import { useState } from "react";
 import "./Login.css";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import Signup from "./Signup";
-import Home from "./Home";
+import { useNavigate } from "react-router-dom";
+
 
 function Login() {
   // States for login
   const [lemail, setLEmail] = useState("");
   const [lpassword, setLPassword] = useState("");
-  const [flag, setFlag] = useState(false);
 
   // States for checking the errors
-  const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
 
   // Handling the email change
   const handleEmail = (e) => {
     setLEmail(e.target.value);
-    setSubmitted(false);
   };
 
   // Handling the password change
   const handlePassword = (e) => {
     setLPassword(e.target.value);
-    setSubmitted(false);
   };
 
   const nav = useNavigate();
-  const navigateToHome = () => {
-    nav("/home");
-  };
+ 
+
+    // Showing error message if error is not true
+    const errorMessage = () => {
+      return (
+        <div
+          className="error"
+          style={{
+            display: error ? "" : "none",
+          }}
+        >
+          <h2>Enter correct login details </h2>
+        </div>
+      );
+    };
+
+ 
 
   // Handling the form submission
   const handleSubmit = (e) => {
@@ -38,15 +47,15 @@ function Login() {
     let mail = localStorage.getItem("email");
 
     if (!lemail || !lpassword) {
-      setFlag(true);
+      setError(true)
       console.log("EMPTY");
     } else if (lpassword !== pass || lemail !== mail) {
-      setFlag(true);
+      setError(true)
     } else {
-      // setHome(!home);
-      setFlag(false);
+      setError(false)
       console.log("ok")
-      navigateToHome();
+      
+      nav('/home')
       
     }
   };
@@ -57,19 +66,6 @@ function Login() {
     navigate("/signup");
   };
 
-  // Showing error message if error is true
-  const errorMessage = () => {
-    return (
-      <div
-        className="error"
-        style={{
-          display: error ? "" : "none",
-        }}
-      >
-        <h2>Enter correct login details </h2>
-      </div>
-    );
-  };
 
   return (
     <div className="App">
@@ -81,10 +77,7 @@ function Login() {
       <div className="messages">{errorMessage()}</div>
 
       <form>
-        {/* Labels and inputs for form data */}
-        {/* <label className="label">Name</label>
-        <input onChange={handleName} className="input"
-          value={name} type="text" /> */}
+        
 
         <label className="label">Email</label>
         <input

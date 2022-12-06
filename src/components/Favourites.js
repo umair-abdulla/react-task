@@ -22,8 +22,10 @@ function Favourites(props) {
    return (
      <div>
          {posts.map((post) => {
+            console.log("favList!!",favList)
             if(favList.includes(post.id))
             {
+                console.log("favList includes this id!!",post.id)
                 return (
                     <div>
                        

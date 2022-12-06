@@ -73,19 +73,17 @@ function Signup() {
   };
  
   // Showing error message if error is true
-  const errorMessage = () => {
+    const errorMessage = () => {
     return (
       <div
         className="error"
         style={{
           display: error ? '' : 'none',
         }}>
-        <h1>Please enter all the fields</h1>
+        <h2>Please enter all the fields</h2>
       </div>
     );
   };
-
-  
  
   return (
     <div className="App">

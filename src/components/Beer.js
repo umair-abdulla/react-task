@@ -5,6 +5,8 @@ import FavButton from './FavButton'
 
 function Beer(props) {
 
+  //  console.log(props);
+    console.log("props in beer !!!",props,"these are the items");
     const [storageItem, setStorageItem] = useState(() => JSON.parse(localStorage.getItem("favourites") || "[]"))
 
     const isFavourited = storageItem.includes(props.id)
