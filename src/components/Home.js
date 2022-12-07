@@ -17,7 +17,7 @@ function Home(props) {
          })
          
    }, []);
-
+ 
    // let favItems= [];
 
    // const favToggle = (id) => {
@@ -28,28 +28,17 @@ function Home(props) {
 
    //    });
    // }
-
+   const favouriteList=false;
   
 
   return (
     <div>
       <Nav/>
-        {posts.map((post) => {
-         return (
-            <div>
-               <div className='header'/>
-
-               <Beer id={post.id} name={post.name} image_url={post.image_url} 
-               first_brewed={post.first_brewed}  posts={posts}/>
-                </div>
-
-         
-         );
-      })}
+      <Beer posts={posts} favouriteList={favouriteList}/>
     
     </div>
   )
-//   <Favourites posts={posts}/>
+
 
 }
 

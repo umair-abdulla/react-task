@@ -5,8 +5,6 @@ function Nav() {
   return (
     <nav>
         <div>
-          
-       
             <ul>
               <li>
                 <Link to="/">

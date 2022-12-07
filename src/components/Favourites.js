@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Beer from './Beer';
-import Home from './Home';
 
 
 
@@ -12,16 +11,27 @@ function Favourites(props) {
        fetch('https://api.punkapi.com/v2/beers/')
           .then((response) => response.json())
           .then((data) => {
-             console.log(data);
-             setPosts(data);
+             let fav=[]
+              {data.map((i) => {
+               
+                    if(favList.includes(i.id))
+                    {
+                    console.log("This beer is in the favList!!!",i)
+                       fav.push(i);
+                    }
+                
+            })} 
+            console.log("fav!!!",fav)
+             setPosts(fav);
           })
           
     }, []);
  
- 
+    const favouriteList=true;
    return (
      <div>
-         {posts.map((post) => {
+        <Beer posts={posts} favouriteList={favouriteList} />
+         {/* {posts.map((post) => {
             console.log("favList!!",favList)
             if(favList.includes(post.id))
             {
@@ -29,15 +39,13 @@ function Favourites(props) {
                 return (
                     <div>
                        
-                       <Beer id={post.id} name={post.name} image_url={post.image_url} 
-                       first_brewed={post.first_brewed}  />
+                       <Beer posts={posts}  />
                         </div>
-        
                  
                  );
             }
           
-       })}
+       })} */}
      
      </div>
    )
