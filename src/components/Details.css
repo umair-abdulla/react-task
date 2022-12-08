@@ -1,0 +1,12 @@
+body{
+    background-color: rgb(219, 220, 194);
+}
+
+.text{
+    font-family:fantasy;
+    font-size:50px ;
+}
+
+.beerText{
+    font-family: 'Times New Roman', Times, serif;
+}

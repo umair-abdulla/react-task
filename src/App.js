@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './components/Home';
 import Favourites from './components/Favourites';
 import Notfound from './components/Notfound';
+import Details from './components/Details';
 
  
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/home" element={<Home />}></Route>
         <Route exact path="/favourites" element={<Favourites/>}></Route>
         <Route path="*" element={<Notfound/>}/> 
+        <Route exact path="/details/:id" element={<Details/>}></Route>
       </Routes>
     </BrowserRouter>
     </div>

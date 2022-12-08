@@ -1,27 +1,27 @@
-import React from 'react';
+import React from 'react'
 import { Link } from "react-router-dom";
 import "./Nav.css"
 
-function Nav() {
 
-  const handleClick = () =>{
+function FavNav() {
+   const handleClick = () =>{
     localStorage.removeItem("favourites");
-  }
 
+   }
   return (
-        <div>
+    <div>
             <ul className='ulist'>
+              
               <li className='list'>
-                <Link to="/favourites">Favourites</Link>
-              </li>
+                <Link to="/home">Home</Link>
+              </li> 
               <li className='list' onClick={handleClick}>
                 <Link to="/">Logout</Link>
-              </li>           
+              </li>          
             </ul>
         
         </div>
-
-    )
+  )
 }
 
-export default Nav
+export default FavNav

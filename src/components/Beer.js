@@ -1,5 +1,8 @@
 import React from 'react'
 import {useState} from 'react'
+import Details from './Details';
+import { useNavigate } from "react-router-dom";
+
 
 
 function Beer({posts,favouriteList}) {
@@ -36,28 +39,37 @@ function Beer({posts,favouriteList}) {
   
       }
 }
+      const navigate = useNavigate();
+      const navigateToDetails = (id) => {
+      //  Details(id)
+        navigate(`/details/${id}`);
+      };
       
   return (
     <div>
-        <table width="100%">
+        <table style={{'width':'100%', 'borderStyle':'solid'}}>
         <tr>
-          <th >ID</th>
-          <th>Image</th>
-          <th>Name</th>
-          <th>First-Brewed</th>
-         { !favouriteList && <th>Favourites Button</th> }
+          <th style={{'borderStyle':'solid'}}>ID</th>
+          <th style={{'borderStyle':'solid'}}>Image</th>
+          <th style={{'borderStyle':'solid'}}>Name</th>
+          <th style={{'borderStyle':'solid'}}>First-Brewed</th>
+         { !favouriteList && <th style={{'borderStyle':'solid'}}>Favourites Button</th> }
+         <th style={{'borderStyle':'solid'}}>Details</th>
         </tr>
 
         {props.map((val) => {
           return (
-            <tr key={val.id}>
-              <td>{val.id}</td>
-              <td><img src={val.image_url} width={100} height={200}/></td>
-              <td>{val.name}</td>
-              <td>{val.first_brewed}</td>
-             {!favouriteList && <td><button onClick={()=>{handleToggleFavourite(val.id)}}  key={val.id}
+            <tr style={{'borderStyle':'solid', 'alignItems':'center'}} key={val.id}>
+              <td style={{'borderStyle':'solid'}}>{val.id}</td>
+              <td style={{'borderStyle':'solid'}}><img src={val.image_url} width={100} height={200}/></td>
+              <td style={{'borderStyle':'solid'}}>{val.name}</td>
+              <td style={{'borderStyle':'solid'}}>{val.first_brewed}</td>
+             {!favouriteList && <td style={{'borderStyle':'solid',}}><button onClick={()=>{handleToggleFavourite(val.id)}}  key={val.id}
     className={isFavourited[val.id-1] ? "fas fa-star text-warning"
     : "far fa-star text-warning"}/></td>}
+              <td style={{'borderStyle':'solid'}}> <button onClick={()=>{navigateToDetails(val.id)}} key={val.id} type="submit">Details</button>
+  </td>
+
             </tr>
           )
         })}
