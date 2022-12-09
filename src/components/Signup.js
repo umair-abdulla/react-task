@@ -1,6 +1,8 @@
 import { useState  } from 'react';
 import './Signup.css'
 import { useNavigate} from 'react-router-dom';
+import validator from 'validator'
+
  
 function Signup() {
  
@@ -12,6 +14,7 @@ function Signup() {
   // States for checking the errors
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
+  const [mailError, setMailError] = useState(false);
  
   // Handling the name change
   const handleName = (event) => {
@@ -22,6 +25,15 @@ function Signup() {
   // Handling the email change
   const handleEmail = (event) => {
     setEmail(event.target.value);
+    // setMailError(event.target.value);
+    if (validator.isEmail(email)) {
+      // setMailError(false)
+      setError(false)
+    } else {
+      // setMailError(true)
+      setError(true)
+
+    }
     setSubmitted(false);
   };
  
@@ -30,6 +42,17 @@ function Signup() {
     setPassword(event.target.value);
     setSubmitted(false);
   };
+
+  //Email validation
+  // const validateEmail = (e) => {
+  //   email = e.target.value
+  
+  //   if (validator.isEmail(email)) {
+  //     setError(false)
+  //   } else {
+  //     setError(true)
+  //   }
+  // }
 
   // For routing to register page
   const navigate = useNavigate();
@@ -73,17 +96,17 @@ function Signup() {
   };
  
   // Showing error message if error is true
-    const errorMessage = () => {
+  const errorMessage = () => {
     return (
       <div
         className="error"
         style={{
           display: error ? '' : 'none',
         }}>
-        <h2>Please enter all the fields</h2>
+        <h2>Please enter the correct details</h2>
       </div>
     );
-  };
+  }
  
   return (
     <div className="App">

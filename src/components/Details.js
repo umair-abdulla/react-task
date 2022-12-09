@@ -17,7 +17,6 @@ function Details({id}) {
      const url=new URL(window.location.href)
 
      let path=url.pathname.split("/")
-    console.log("path!!",path[path.length-1])
     fetchData(path[path.length-1]);
   },[])
 

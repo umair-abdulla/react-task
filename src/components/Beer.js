@@ -79,15 +79,6 @@ function Beer({posts,favouriteList}) {
       </table>
 
 
-        {/* <div  key={props.id}>
-                <img src={props.image_url} alt='icons'/>                
-                <p>{props.name}</p>
-                <p>First brewed: {props.first_brewed}</p>
-                <button onClick={handleToggleFavourite}
-    className={isFavourited ? "fas fa-star text-warning"
-    : "far fa-star text-warning"}>
-  </button>
-                </div> */}
     </div> 
   )
 }
